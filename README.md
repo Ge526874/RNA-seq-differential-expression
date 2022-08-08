@@ -213,7 +213,7 @@ dys_reg <- assay(vsd)[which(row.names(assay(vsd)) %in% resOrdered$ensembl_gene_i
 #melting dataset for visualization
 melted_norm_counts <-data.frame(melt(dys_reg))
 colnames(melted_norm_counts) <- c("gene", "samplename", "normalized_counts")
-melted_norm_counts$group <- ifelse(melted_norm_counts$samplename %in% colnames(assay(vsd))["normal idx"], "Normal", "Tumor")
+melted_norm_counts$group <- ifelse(melted_norm_counts$samplename %in% colnames(assay(vsd))[normal_idx], "Normal", "Tumor")
 
 # write.table to import in python
 write.table(melted_norm_counts, file = "data.csv", sep = ",", row.names = F)
